@@ -1,16 +1,70 @@
-<div id="cd-widget"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget with Floating GIF</title>
+    <style>
+        /* Floating Background GIF */
+        #floating-gif {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 150px;
+            height: auto;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 998;
+            animation: floatAnimation 3s ease-in-out infinite alternate;
+        }
+
+        /* Floating Animation */
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+
+        /* Chat Widget Container */
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            overflow: hidden;
+            z-index: 999; /* Ensure chat widget is above the floating GIF */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Floating Background GIF -->
+<img id="floating-gif" src="https://media.tenor.com/E3rdAXiaSosAAAAi/cat-heart.gif" alt="Floating GIF">
+
+<!-- Chat Widget Container -->
+<div id="chat-widget-container">
+    <div id="cd-widget"></div>
+</div>
+
 <script>
-  (function() {
-      if (window.chatWidgetScriptLoaded) return;
-      window.ChatWidgetConfig = {
-        projectId: "67a3905172dcad8734b95e79", 
-      };
+    (function() {
+        if (window.chatWidgetScriptLoaded) return;
+        window.ChatWidgetConfig = {
+            projectId: "67a3905172dcad8734b95e79",
+        };
 
-      var chatWidgetScript = document.createElement("script");
-      chatWidgetScript.type = 'text/javascript';
-      chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
-      document.body.appendChild(chatWidgetScript);
+        var chatWidgetScript = document.createElement("script");
+        chatWidgetScript.type = 'text/javascript';
+        chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
+        document.body.appendChild(chatWidgetScript);
 
-      window.chatWidgetScriptLoaded = true;
-  })();
+        window.chatWidgetScriptLoaded = true;
+    })();
 </script>
+
+</body>
+</html>
